@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang=\"pt-BR\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Casa do Lanche - Sabor Tradicional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-primaria: #d2691e;
+            --cor-secundaria: #8b4513;
+            --cor-acento: #ff7f50;
+            --cor-fundo: #faf0e6;
+            --cor-fundo-escuro: #f5deb3;
+            --cor-texto: #2f1f14;
+            --cor-texto-claro: #5d4e37;
+            --branco: #ffffff;
+            --sombra: rgba(139, 69, 19, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-primaria) 100%);
+            color: var(--branco);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--sombra);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--branco);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(210, 105, 30, 0.7)),
+                        url('https://images.unsplash.com/photo-1550547660-d9450f859349?w=1600&h=900&fit=crop') center/cover;
+            color: var(--branco);
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--cor-acento);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 127, 80, 0.4);
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 127, 80, 0.6);
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--cor-secundaria);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--cor-acento);
+            border-radius: 2px;
+        }
+
+        /* Menu Section */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.8rem 1.8rem;
+            background-color: var(--branco);
+            color: var(--cor-secundaria);
+            border: 2px solid var(--cor-primaria);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--cor-primaria);
+            color: var(--branco);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--sombra);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: var(--branco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--sombra);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.25);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            color: var(--cor-secundaria);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .menu-item-description {
+            color: var(--cor-texto-claro);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .menu-item-price {
+            font-size: 1.4rem;
+            color: var(--cor-primaria);
+            font-weight: bold;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 300px;
+            box-shadow: 0 5px 20px var(--sombra);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(139, 69, 19, 0.9), transparent);
+            color: var(--branco);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cor-texto-claro);
+        }
+
+        .about-text h3 {
+            color: var(--cor-secundaria);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--sombra);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: var(--branco);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--sombra);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            color: var(--cor-secundaria);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--branco);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--sombra);
+        }
+
+        .contact-info h3 {
+            color: var(--cor-secundaria);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--cor-primaria);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--cor-fundo-escuro);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--cor-primaria);
+            color: var(--branco);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--cor-secundaria);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--cor-secundaria);
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--branco);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--cor-acento);
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: var(--branco);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--cor-secundaria);
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                padding: 2rem 0;
+                box-shadow: 0 4px 12px var(--sombra);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class=\"header\">
+        <div class=\"nav-container\">
+            <div class=\"logo\">🍔 Casa do Lanche</div>
+            <button class=\"menu-toggle\" onclick=\"toggleMenu()\">☰</button>
+            <nav>
+                <ul class=\"nav-menu\" id=\"navMenu\">
+                    <li><a href=\"#inicio\" onclick=\"closeMenu()\">Início</a></li>
+                    <li><a href=\"#cardapio\" onclick=\"closeMenu()\">Cardápio</a></li>
+                    <li><a href=\"#galeria\" onclick=\"closeMenu()\">Galeria</a></li>
+                    <li><a href=\"#sobre\" onclick=\"closeMenu()\">Sobre</a></li>
+                    <li><a href=\"#contato\" onclick=\"closeMenu()\">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id=\"inicio\" class=\"hero\">
+        <div class=\"hero-content\">
+            <h1>Casa do Lanche</h1>
+            <p>Sabor tradicional que aquece o coração</p>
+            <a href=\"#cardapio\" class=\"btn\">Ver Cardápio</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id=\"cardapio\" class=\"section\">
+        <h2 class=\"section-title\">Nosso Cardápio</h2>
+        
+        <div class=\"menu-categories\">
+            <button class=\"category-btn active\" onclick=\"filterMenu('todos')\">Todos</button>
+            <button class=\"category-btn\" onclick=\"filterMenu('lanches')\">Lanches</button>
+            <button class=\"category-btn\" onclick=\"filterMenu('bebidas')\">Bebidas</button>
+            <button class=\"category-btn\" onclick=\"filterMenu('porcoes')\">Porções</button>
+            <button class=\"category-btn\" onclick=\"filterMenu('sobremesas')\">Sobremesas</button>
+        </div>
+
+        <div class=\"menu-grid\" id=\"menuGrid\">
+            <!-- Menu items will be inserted by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id=\"galeria\" class=\"section\" style=\"background-color: var(--cor-fundo-escuro);\">
+        <h2 class=\"section-title\">Nosso Ambiente</h2>
+        <div class=\"gallery-grid\">
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop\" alt=\"Interior da lanchonete\">
+                <div class=\"gallery-overlay\">
+                    <h3>Ambiente Aconchegante</h3>
+                </div>
+            </div>
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop\" alt=\"Área externa\">
+                <div class=\"gallery-overlay\">
+                    <h3>Área Externa</h3>
+                </div>
+            </div>
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop\" alt=\"Decoração\">
+                <div class=\"gallery-overlay\">
+                    <h3>Decoração Especial</h3>
+                </div>
+            </div>
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=400&fit=crop\" alt=\"Cozinha\">
+                <div class=\"gallery-overlay\">
+                    <h3>Cozinha Profissional</h3>
+                </div>
+            </div>
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop\" alt=\"Salão principal\">
+                <div class=\"gallery-overlay\">
+                    <h3>Salão Principal</h3>
+                </div>
+            </div>
+            <div class=\"gallery-item\">
+                <img src=\"https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=600&h=400&fit=crop\" alt=\"Balcão\">
+                <div class=\"gallery-overlay\">
+                    <h3>Balcão de Atendimento</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id=\"sobre\" class=\"section\">
+        <h2 class=\"section-title\">Sobre Nós</h2>
+        <div class=\"about-content\">
+            <div class=\"about-text\">
+                <h3>Tradição e Qualidade desde 1995</h3>
+                <p>
+                    A Casa do Lanche nasceu do sonho de uma família apaixonada por gastronomia. 
+                    Há mais de 25 anos, servimos os melhores lanches da região com ingredientes 
+                    frescos e selecionados.
+                </p>
+                <p>
+                    Nossa missão é proporcionar momentos especiais através da comida caseira, 
+                    feita com carinho e dedicação. Cada receita é preparada com o mesmo amor 
+                    de sempre, mantendo o sabor tradicional que conquistou gerações.
+                </p>
+                <p>
+                    Venha nos visitar e fazer parte da nossa história!
+                </p>
+            </div>
+            <div class=\"about-image\">
+                <img src=\"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop\" alt=\"Nossa história\">
+            </div>
+        </div>
+
+        <div class=\"features\">
+            <div class=\"feature\">
+                <div class=\"feature-icon\">🍔</div>
+                <h4>Ingredientes Frescos</h4>
+                <p>Selecionados diariamente</p>
+            </div>
+            <div class=\"feature\">
+                <div class=\"feature-icon\">👨‍🍳</div>
+                <h4>Chefs Experientes</h4>
+                <p>Mais de 20 anos de experiência</p>
+            </div>
+            <div class=\"feature\">
+                <div class=\"feature-icon\">🚚</div>
+                <h4>Delivery Rápido</h4>
+                <p>Entrega em até 30 minutos</p>
+            </div>
+            <div class=\"feature\">
+                <div class=\"feature-icon\">⭐</div>
+                <h4>Atendimento 5 Estrelas</h4>
+                <p>Sua satisfação é nossa prioridade</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id=\"contato\" class=\"section\" style=\"background-color: var(--cor-fundo-escuro);\">
+        <h2 class=\"section-title\">Entre em Contato</h2>
+        <div class=\"contact-content\">
+            <div class=\"contact-info\">
+                <h3>Informações</h3>
+                <div class=\"contact-item\">
+                    <span class=\"contact-icon\">📍</span>
+                    <span>Rua das Delícias, 123 - Centro<br>São Paulo, SP</span>
+                </div>
+                <div class=\"contact-item\">
+                    <span class=\"contact-icon\">📞</span>
+                    <span>(11) 98765-4321</span>
+                </div>
+                <div class=\"contact-item\">
+                    <span class=\"contact-icon\">📧</span>
+                    <span>contato@casadolanche.com.br</span>
+                </div>
+                <div class=\"contact-item\">
+                    <span class=\"contact-icon\">🕒</span>
+                    <span>Seg - Dom: 11h às 23h</span>
+                </div>
+            </div>
+            <div class=\"contact-form\">
+                <form onsubmit=\"handleSubmit(event)\">
+                    <input type=\"text\" placeholder=\"Seu Nome\" required>
+                    <input type=\"email\" placeholder=\"Seu Email\" required>
+                    <input type=\"tel\" placeholder=\"Seu Telefone\">
+                    <textarea placeholder=\"Sua Mensagem\" required></textarea>
+                    <button type=\"submit\">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=\"footer\">
+        <p>&copy; 2024 Casa do Lanche - Todos os direitos reservados</p>
+        <p>Desenvolvido com ❤️ para você</p>
+        <div class=\"social-links\">
+            <a href=\"#\" title=\"Facebook\">📘</a>
+            <a href=\"#\" title=\"Instagram\">📷</a>
+            <a href=\"#\" title=\"Twitter\">🐦</a>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href=\"https://wa.me/5511987654321?text=Olá! Gostaria de fazer um pedido\" 
+       class=\"whatsapp-float\" 
+       target=\"_blank\"
+       title=\"Fale conosco pelo WhatsApp\">
+        💬
+    </a>
+
+    <script>
+        // Menu Data
+        const menuItems = [
+            {
+                id: 1,
+                category: 'lanches',
+                name: 'X-Burger Clássico',
+                description: 'Hambúrguer artesanal, queijo, alface, tomate e molho especial',
+                price: 'R$ 18,90',
+                image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop'
+            },
+            {
+                id: 2,
+                category: 'lanches',
+                name: 'X-Bacon Especial',
+                description: 'Hambúrguer, bacon crocante, queijo cheddar e cebola caramelizada',
+                price: 'R$ 22,90',
+                image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&h=300&fit=crop'
+            },
+            {
+                id: 3,
+                category: 'lanches',
+                name: 'X-Salada Completo',
+                description: 'Hambúrguer, presunto, queijo, ovo, alface, tomate e maionese',
+                price: 'R$ 20,90',
+                image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=400&h=300&fit=crop'
+            },
+            {
+                id: 4,
+                category: 'lanches',
+                name: 'X-Frango Grelhado',
+                description: 'Peito de frango grelhado, queijo, alface e molho de iogurte',
+                price: 'R$ 19,90',
+                image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&h=300&fit=crop'
+            },
+            {
+                id: 5,
+                category: 'bebidas',
+                name: 'Suco Natural',
+                description: 'Laranja, limão, morango ou maracujá - 500ml',
+                price: 'R$ 8,90',
+                image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop'
+            },
+            {
+                id: 6,
+                category: 'bebidas',
+                name: 'Refrigerante Lata',
+                description: 'Coca-Cola, Guaraná, Sprite ou Fanta - 350ml',
+                price: 'R$ 5,50',
+                image: 'https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=400&h=300&fit=crop'
+            },
+            {
+                id: 7,
+                category: 'bebidas',
+                name: 'Milkshake',
+                description: 'Chocolate, morango, baunilha ou ovomaltine - 400ml',
+                price: 'R$ 12,90',
+                image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&h=300&fit=crop'
+            },
+            {
+                id: 8,
+                category: 'porcoes',
+                name: 'Batata Frita',
+                description: 'Porção de batatas fritas crocantes - serve 2 pessoas',
+                price: 'R$ 15,90',
+                image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&h=300&fit=crop'
+            },
+            {
+                id: 9,
+                category: 'porcoes',
+                name: 'Onion Rings',
+                description: 'Anéis de cebola empanados e fritos - 12 unidades',
+                price: 'R$ 14,90',
+                image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?w=400&h=300&fit=crop'
+            },
+            {
+                id: 10,
+                category: 'porcoes',
+                name: 'Nuggets de Frango',
+                description: 'Pedaços de frango empanados com molhos - 10 unidades',
+                price: 'R$ 16,90',
+                image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop'
+            },
+            {
+                id: 11,
+                category: 'sobremesas',
+                name: 'Brownie com Sorvete',
+                description: 'Brownie de chocolate quente com sorvete de baunilha',
+                price: 'R$ 13,90',
+                image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop'
+            },
+            {
+                id: 12,
+                category: 'sobremesas',
+                name: 'Cheesecake',
+                description: 'Torta de cream cheese com calda de frutas vermelhas',
+                price: 'R$ 12,90',
+                image: 'https://images.unsplash.com/photo-1533134242820-b77d912a95fd?w=400&h=300&fit=crop'
+            }
+        ];
+
+        // Display menu items
+        function displayMenu(items) {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = '';
+            
+            items.forEach(item => {
+                const menuItemHTML = `
+                    <div class=\"menu-item\" data-category=\"${item.category}\">
+                        <img src=\"${item.image}\" alt=\"${item.name}\" class=\"menu-item-image\">
+                        <div class=\"menu-item-content\">
+                            <h3 class=\"menu-item-title\">${item.name}</h3>
+                            <p class=\"menu-item-description\">${item.description}</p>
+                            <p class=\"menu-item-price\">${item.price}</p>
+                        </div>
+                    </div>
+                `;
+                menuGrid.innerHTML += menuItemHTML;
+            });
+        }
+
+        // Filter menu by category
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (category === 'todos') {
+                displayMenu(menuItems);
+            } else {
+                const filtered = menuItems.filter(item => item.category === category);
+                displayMenu(filtered);
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+            event.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize menu
+        displayMenu(menuItems);
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe menu items for animation
+        setTimeout(() => {
+            document.querySelectorAll('.menu-item, .gallery-item, .feature').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }, 100);
+    </script>
+</body>
+</html>
