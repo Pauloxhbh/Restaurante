@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang=\"pt-BR\">
+<html lang="pt-BR">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa do Lanche - Sabor Tradicional</title>
     <style>
         * {
@@ -544,97 +544,91 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class=\"header\">
-        <div class=\"nav-container\">
-            <div class=\"logo\">🍔 Casa do Lanche</div>
-            <button class=\"menu-toggle\" onclick=\"toggleMenu()\">☰</button>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">🍔 Casa do Lanche</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <nav>
-                <ul class=\"nav-menu\" id=\"navMenu\">
-                    <li><a href=\"#inicio\" onclick=\"closeMenu()\">Início</a></li>
-                    <li><a href=\"#cardapio\" onclick=\"closeMenu()\">Cardápio</a></li>
-                    <li><a href=\"#galeria\" onclick=\"closeMenu()\">Galeria</a></li>
-                    <li><a href=\"#sobre\" onclick=\"closeMenu()\">Sobre</a></li>
-                    <li><a href=\"#contato\" onclick=\"closeMenu()\">Contato</a></li>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" onclick="closeMenu()">Início</a></li>
+                    <li><a href="#cardapio" onclick="closeMenu()">Cardápio</a></li>
+                    <li><a href="#galeria" onclick="closeMenu()">Galeria</a></li>
+                    <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                    <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id=\"inicio\" class=\"hero\">
-        <div class=\"hero-content\">
+    <section id="inicio" class="hero">
+        <div class="hero-content">
             <h1>Casa do Lanche</h1>
             <p>Sabor tradicional que aquece o coração</p>
-            <a href=\"#cardapio\" class=\"btn\">Ver Cardápio</a>
+            <a href="#cardapio" class="btn">Ver Cardápio</a>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section id=\"cardapio\" class=\"section\">
-        <h2 class=\"section-title\">Nosso Cardápio</h2>
+    <section id="cardapio" class="section">
+        <h2 class="section-title">Nosso Cardápio</h2>
         
-        <div class=\"menu-categories\">
-            <button class=\"category-btn active\" onclick=\"filterMenu('todos')\">Todos</button>
-            <button class=\"category-btn\" onclick=\"filterMenu('lanches')\">Lanches</button>
-            <button class=\"category-btn\" onclick=\"filterMenu('bebidas')\">Bebidas</button>
-            <button class=\"category-btn\" onclick=\"filterMenu('porcoes')\">Porções</button>
-            <button class=\"category-btn\" onclick=\"filterMenu('sobremesas')\">Sobremesas</button>
+        <div class="menu-categories">
+            <button class="category-btn active" onclick="filterMenu('todos')">Todos</button>
+            <button class="category-btn" onclick="filterMenu('lanches')">Lanches</button>
+            <button class="category-btn" onclick="filterMenu('bebidas')">Bebidas</button>
+            <button class="category-btn" onclick="filterMenu('porcoes')">Porções</button>
+            <button class="category-btn" onclick="filterMenu('sobremesas')">Sobremesas</button>
         </div>
 
-        <div class=\"menu-grid\" id=\"menuGrid\">
-            <!-- Menu items will be inserted by JavaScript -->
-        </div>
+        <div class="menu-grid" id="menuGrid">
+            </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id=\"galeria\" class=\"section\" style=\"background-color: var(--cor-fundo-escuro);\">
-        <h2 class=\"section-title\">Nosso Ambiente</h2>
-        <div class=\"gallery-grid\">
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop\" alt=\"Interior da lanchonete\">
-                <div class=\"gallery-overlay\">
+    <section id="galeria" class="section" style="background-color: var(--cor-fundo-escuro);">
+        <h2 class="section-title">Nosso Ambiente</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Interior da lanchonete">
+                <div class="gallery-overlay">
                     <h3>Ambiente Aconchegante</h3>
                 </div>
             </div>
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop\" alt=\"Área externa\">
-                <div class=\"gallery-overlay\">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop" alt="Área externa">
+                <div class="gallery-overlay">
                     <h3>Área Externa</h3>
                 </div>
             </div>
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop\" alt=\"Decoração\">
-                <div class=\"gallery-overlay\">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Decoração">
+                <div class="gallery-overlay">
                     <h3>Decoração Especial</h3>
                 </div>
             </div>
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=400&fit=crop\" alt=\"Cozinha\">
-                <div class=\"gallery-overlay\">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=400&fit=crop" alt="Cozinha">
+                <div class="gallery-overlay">
                     <h3>Cozinha Profissional</h3>
                 </div>
             </div>
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop\" alt=\"Salão principal\">
-                <div class=\"gallery-overlay\">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop" alt="Salão principal">
+                <div class="gallery-overlay">
                     <h3>Salão Principal</h3>
                 </div>
             </div>
-            <div class=\"gallery-item\">
-                <img src=\"https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=600&h=400&fit=crop\" alt=\"Balcão\">
-                <div class=\"gallery-overlay\">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=600&h=400&fit=crop" alt="Balcão">
+                <div class="gallery-overlay">
                     <h3>Balcão de Atendimento</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id=\"sobre\" class=\"section\">
-        <h2 class=\"section-title\">Sobre Nós</h2>
-        <div class=\"about-content\">
-            <div class=\"about-text\">
+    <section id="sobre" class="section">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div class="about-content">
+            <div class="about-text">
                 <h3>Tradição e Qualidade desde 1995</h3>
                 <p>
                     A Casa do Lanche nasceu do sonho de uma família apaixonada por gastronomia. 
@@ -650,86 +644,83 @@
                     Venha nos visitar e fazer parte da nossa história!
                 </p>
             </div>
-            <div class=\"about-image\">
-                <img src=\"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop\" alt=\"Nossa história\">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop" alt="Nossa história">
             </div>
         </div>
 
-        <div class=\"features\">
-            <div class=\"feature\">
-                <div class=\"feature-icon\">🍔</div>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🍔</div>
                 <h4>Ingredientes Frescos</h4>
                 <p>Selecionados diariamente</p>
             </div>
-            <div class=\"feature\">
-                <div class=\"feature-icon\">👨‍🍳</div>
+            <div class="feature">
+                <div class="feature-icon">👨‍🍳</div>
                 <h4>Chefs Experientes</h4>
                 <p>Mais de 20 anos de experiência</p>
             </div>
-            <div class=\"feature\">
-                <div class=\"feature-icon\">🚚</div>
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
                 <h4>Delivery Rápido</h4>
                 <p>Entrega em até 30 minutos</p>
             </div>
-            <div class=\"feature\">
-                <div class=\"feature-icon\">⭐</div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
                 <h4>Atendimento 5 Estrelas</h4>
                 <p>Sua satisfação é nossa prioridade</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id=\"contato\" class=\"section\" style=\"background-color: var(--cor-fundo-escuro);\">
-        <h2 class=\"section-title\">Entre em Contato</h2>
-        <div class=\"contact-content\">
-            <div class=\"contact-info\">
+    <section id="contato" class="section" style="background-color: var(--cor-fundo-escuro);">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-content">
+            <div class="contact-info">
                 <h3>Informações</h3>
-                <div class=\"contact-item\">
-                    <span class=\"contact-icon\">📍</span>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
                     <span>Rua das Delícias, 123 - Centro<br>São Paulo, SP</span>
                 </div>
-                <div class=\"contact-item\">
-                    <span class=\"contact-icon\">📞</span>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
                     <span>(11) 98765-4321</span>
                 </div>
-                <div class=\"contact-item\">
-                    <span class=\"contact-icon\">📧</span>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
                     <span>contato@casadolanche.com.br</span>
                 </div>
-                <div class=\"contact-item\">
-                    <span class=\"contact-icon\">🕒</span>
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
                     <span>Seg - Dom: 11h às 23h</span>
                 </div>
             </div>
-            <div class=\"contact-form\">
-                <form onsubmit=\"handleSubmit(event)\">
-                    <input type=\"text\" placeholder=\"Seu Nome\" required>
-                    <input type=\"email\" placeholder=\"Seu Email\" required>
-                    <input type=\"tel\" placeholder=\"Seu Telefone\">
-                    <textarea placeholder=\"Sua Mensagem\" required></textarea>
-                    <button type=\"submit\">Enviar Mensagem</button>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu Email" required>
+                    <input type="tel" placeholder="Seu Telefone">
+                    <textarea placeholder="Sua Mensagem" required></textarea>
+                    <button type="submit">Enviar Mensagem</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class=\"footer\">
+    <footer class="footer">
         <p>&copy; 2024 Casa do Lanche - Todos os direitos reservados</p>
         <p>Desenvolvido com ❤️ para você</p>
-        <div class=\"social-links\">
-            <a href=\"#\" title=\"Facebook\">📘</a>
-            <a href=\"#\" title=\"Instagram\">📷</a>
-            <a href=\"#\" title=\"Twitter\">🐦</a>
+        <div class="social-links">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="Twitter">🐦</a>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href=\"https://wa.me/5511987654321?text=Olá! Gostaria de fazer um pedido\" 
-       class=\"whatsapp-float\" 
-       target=\"_blank\"
-       title=\"Fale conosco pelo WhatsApp\">
+    <a href="https://wa.me/5511987654321?text=Olá! Gostaria de fazer um pedido" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Fale conosco pelo WhatsApp">
         💬
     </a>
 
@@ -841,12 +832,12 @@
             
             items.forEach(item => {
                 const menuItemHTML = `
-                    <div class=\"menu-item\" data-category=\"${item.category}\">
-                        <img src=\"${item.image}\" alt=\"${item.name}\" class=\"menu-item-image\">
-                        <div class=\"menu-item-content\">
-                            <h3 class=\"menu-item-title\">${item.name}</h3>
-                            <p class=\"menu-item-description\">${item.description}</p>
-                            <p class=\"menu-item-price\">${item.price}</p>
+                    <div class="menu-item" data-category="${item.category}">
+                        <img src="${item.image}" alt="${item.name}" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">${item.name}</h3>
+                            <p class="menu-item-description">${item.description}</p>
+                            <p class="menu-item-price">${item.price}</p>
                         </div>
                     </div>
                 `;
@@ -887,7 +878,7 @@
         }
 
         // Smooth scroll
-        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -929,4 +920,4 @@
         }, 100);
     </script>
 </body>
-</html>
+    </html>
