@@ -825,7 +825,7 @@
             }
         ];
 
-        // Display menu items
+        
         function displayMenu(items) {
             const menuGrid = document.getElementById('menuGrid');
             menuGrid.innerHTML = '';
@@ -845,7 +845,7 @@
             });
         }
 
-        // Filter menu by category
+        
         function filterMenu(category) {
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -859,7 +859,7 @@
             }
         }
 
-        // Mobile menu toggle
+        
         function toggleMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
@@ -870,14 +870,14 @@
             navMenu.classList.remove('active');
         }
 
-        // Form submission
+        
         function handleSubmit(event) {
             event.preventDefault();
             alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
             event.target.reset();
         }
 
-        // Smooth scroll
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -891,10 +891,10 @@
             });
         });
 
-        // Initialize menu
+        
         displayMenu(menuItems);
 
-        // Add scroll animation
+        
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -909,7 +909,7 @@
             });
         }, observerOptions);
 
-        // Observe menu items for animation
+        
         setTimeout(() => {
             document.querySelectorAll('.menu-item, .gallery-item, .feature').forEach(el => {
                 el.style.opacity = '0';
